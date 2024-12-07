@@ -50,7 +50,13 @@ public class MyString {
 
          while(str1.length() > 0) {
             if ((countChar(str2,str1.charAt(0))  != 0)) {
-                str1 = str1.substring(1);
+                    for( int i = 0; i < str2.length(); i++) {
+                        if(str2.charAt(i) == str1.charAt(0)) {
+                            str1 = str1.substring(1);
+                            str2 = str2.substring(0, i) + str2.substring(i+1);
+                            break;
+                        }
+                    }
             }
             else { return false;} 
          }
