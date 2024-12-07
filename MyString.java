@@ -8,6 +8,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+        System.out.println(remove(hello, "hl"));
         //// Put your other tests here.
     }
 
@@ -20,8 +21,14 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        //// Replace the following statement with your code 
+
+        int couter = 0;
+        if (str.length() == 0) {return 0;}
+        for (int i = 0; i < str.length(); i++) {
+            if(str.charAt(i) == ch) {couter++;}
+        }
+        return couter;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -37,7 +44,15 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
-        return false;
+         if (str1.length() > str2.length() || str2.length() == 0) {return false;}
+
+         while(str1.length() > 0) {
+            if ((countChar(str2,str1.charAt(0))  != 0)) {
+                str1 = str1.substring(1);
+            }
+            else { return false;} 
+         }
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -50,7 +65,13 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-        return null;
+        if(str.length() == 0) {return null;}
+        String newstr = "";
+        for(int i = 0; i < str.length(); i++) {
+            newstr += str.charAt(i);
+            newstr += " ";
+        }
+        return newstr;
     }
   
     /**
@@ -65,7 +86,14 @@ public class MyString {
      */
     public static String randomStringOfLetters(int n) {
         //// Replace the following statement with your code
-        return null;
+        
+        String str = "";
+        for (int i = 0; i < n; i++) {
+           int x = 97 + (int) (Math.random() * 26);
+           char ch = (char) x;
+           str += ch;
+        }
+        return str;
     }
 
     /**
@@ -79,7 +107,15 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
        //// Replace the following statement with your code
-        return null;
+       for(int i = 0; i < str2.length(); i++) {
+            for(int j = 0; j < str1.length(); j++) {
+                if(str1.charAt(j) == str2.charAt(i)) {
+                    str1 = str1.substring(0, j) + str1.substring(j+1);
+                    break;
+                }
+            }
+       }
+        return str1;
     }
 
     /**
