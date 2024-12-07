@@ -9,6 +9,7 @@ public class MyString {
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
         System.out.println(remove(hello, "hl"));
+        System.out.println(subsetOf("pass", "space"));
         //// Put your other tests here.
     }
 
@@ -72,7 +73,7 @@ public class MyString {
             newstr += str.charAt(i);
             newstr += " ";
         }
-        newstr = newstr.substring(0, newstr.length());
+        newstr = newstr.substring(0, newstr.length()-2);
         return newstr;
     }
   
