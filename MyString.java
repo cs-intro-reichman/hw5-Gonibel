@@ -73,7 +73,11 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-        if(str.length() == 0) {return null;}
+        if(str.length() == 0) {return " ";}
+        if(str.length() == 1) {
+            String newstr = " " + str;
+            return newstr;
+        }
         String newstr = "";
         for(int i = 0; i < str.length(); i++) {
             newstr += str.charAt(i);
