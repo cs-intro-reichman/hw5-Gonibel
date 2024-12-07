@@ -79,7 +79,7 @@ public class MyString {
             newstr += str.charAt(i);
             newstr += " ";
         }
-        newstr = newstr.substring(0, newstr.length()-2);
+        newstr = newstr.substring(0, newstr.length()-1);
         return newstr;
     }
   
