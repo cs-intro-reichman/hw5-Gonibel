@@ -44,7 +44,8 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
-         if (str1.length() > str2.length() || str2.length() == 0) {return false;}
+         if (str1.length() > str2.length()) {return false;}
+         if (str1.equals("")) {return true;}
 
          while(str1.length() > 0) {
             if ((countChar(str2,str1.charAt(0))  != 0)) {
@@ -71,6 +72,7 @@ public class MyString {
             newstr += str.charAt(i);
             newstr += " ";
         }
+        newstr = newstr.substring(0, newstr.length());
         return newstr;
     }
   
