@@ -112,8 +112,11 @@ public class Scrabble {
 			//// Replace the following break statement with code
 			//// that completes the hand playing loop
 			if(input.equals(".")) {break;}
+			if (!MyString.subsetOf(input, hand)) {
+				System.out.println("Invalid word. Try again.");
+			}
 			if(!isWordInDictionary(input)) {System.out.println("No such word in the dictionary. Try again.");}
-			if(isWordInDictionary(input)) {
+			else {
 				score += wordScore(input);
 				hand = MyString.remove(hand, input);
 			}
@@ -166,6 +169,7 @@ public class Scrabble {
 		///testScrabbleScore();    
 		///testCreateHands();  
 		///testPlayHands();
+		System.out.println(MyString.remove("aretiin", "train"));
 		playGame();
 	}
 
