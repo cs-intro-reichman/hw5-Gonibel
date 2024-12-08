@@ -74,6 +74,7 @@ public class Scrabble {
 				}
 			}
 		}
+		score += (score * word.length());
 		if(word.length() == 10) {score += 50;}
 		if(MyString.subsetOf("runi", word)) {score += 1000;}
 		return score;
