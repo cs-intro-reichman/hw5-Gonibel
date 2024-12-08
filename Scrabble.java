@@ -71,10 +71,11 @@ public class Scrabble {
 			for(int j = 0; j < letters.length; j++) {
 				if( word.charAt(i) == letters[j]) {
 					score += letterscore[j];
+					break;
 				}
 			}
 		}
-		score += (score * word.length());
+		score = (score * word.length());
 		if(word.length() == 10) {score += 50;}
 		if(MyString.subsetOf("runi", word)) {score += 1000;}
 		return score;
