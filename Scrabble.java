@@ -97,36 +97,44 @@ public class Scrabble {
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
 	public static void playHand(String hand) {
-		int score = 0;
+		int score = 0; // Total score
 		In in = new In(); // For reading user input
 		
 		while (hand.length() > 0) {
+			// Display current hand
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 			
+			// Get user input
 			String input = in.readString();
 			
+			// Handle end of hand
 			if (input.equals(".")) {
-				break; // End the game
+				break; // Exit the loop
 			}
 			
+			// Check for invalid words
 			if (!MyString.subsetOf(input, hand) || !isWordInDictionary(input)) {
 				System.out.println("Invalid word. Try again.");
-			} else {
-				int wordScore = wordScore(input);
-				score += wordScore;
-				hand = MyString.remove(hand, input);
-				System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points.");
+				continue; // Skip to next iteration
 			}
+			
+			// Valid word: Update score and hand
+			int wordScore = wordScore(input); // Calculate word score
+			score += wordScore; // Update total score
+			hand = MyString.remove(hand, input); // Remove letters from hand
+			
+			// Display word score and total score
+			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points.");
 		}
 		
+		// End-of-hand message
 		if (hand.length() == 0) {
-			System.out.println("Ran out of letters. Total score: " + score + " points");
+			System.out.println("Ran out of letters. Total score: " + score + " points.");
 		} else {
-			System.out.println("End of hand. Total score: " + score + " points");
+			System.out.println("End of hand. Total score: " + score + " points.");
 		}
 	}
-
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
 	// to end the game. If the user enters any other input, writes an error message.
 	public static void playGame() {
